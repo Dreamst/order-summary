@@ -1,11 +1,8 @@
 <template>
   <div class="assistance">
       <h2 class="title uppercase my-30 text-center">Besoin d'aide ?</h2>
-      
-      <div v-for="toto in assistances" :key="toto.id">
-        {{toto.title}} {{toto.text}}
-      </div>
-      <!-- <Dropdown :value="assistances" /> -->
+
+      <InputsDropdown :values="assistances" :whichdropdown="1" />
     </div>
 </template>
 
@@ -29,7 +26,3 @@ export default {
     methods: {}
 }
 </script>
-
-<style>
-
-</style>

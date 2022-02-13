@@ -13,11 +13,9 @@ export const getters = {
 }
 
 export const mutations = {
-    SET_PRODUCTS(state, data) {
-        state.products = data
-    },
-    SET_ORDER(state, data) {
-        state.order = data
+    SET_SUMMARY(state, {products, order}) {
+        state.products = products;
+        state.order = order;
     }
 }
 
@@ -28,9 +26,7 @@ export const actions = {
           '/fakeAPI/json-tediber.json', { proxy: { host: '127.0.0.1', port: 3000 } }
         )
         .then((response) => {
-            console.log("[AXIOS]", response)
-            commit("SET_PRODUCTS", response.products);
-            commit("SET_ORDER", response.order);
+            commit("SET_SUMMARY", response);
         })
         .catch( (error) => {
             console.log("[AXIOS ORDER SUMMARY ACTION] ERROR DURING REQUEST", error)

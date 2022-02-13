@@ -2,7 +2,7 @@
   <div class="payment-informations">
       <h2 class="title uppercase my-30 text-center">Informations de paiement</h2>
 
-      <div class="bg-white box-shadow p-10 flex items-center ">
+      <div class="bg-white box-shadow p-10 flex flex--xs items-center ">
         <div class="figure">
           <img :src="order.paymentMethod.image" alt="Tediber" />
         </div>

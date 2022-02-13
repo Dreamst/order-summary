@@ -9,8 +9,8 @@ export const getters = {
 }
 
 export const mutations = {
-    SET_ASSISTANCES(state, data) {
-        state.assistances = data
+    SET_ASSISTANCES(state, {help}) {
+        state.assistances = help
     }
 }
 
@@ -21,8 +21,7 @@ export const actions = {
           '/fakeAPI/json-tediber.json', { proxy: { host: '127.0.0.1', port: 3000 }}
         )
         .then((response) => {
-            console.log("[AXIOS]", response)
-            commit("SET_ASSISTANCES", response.help)
+            commit("SET_ASSISTANCES", response);
         })
         .catch( (error) => {
             console.log("[AXIOS HELP ACTION] ERROR DURING REQUEST", error)
