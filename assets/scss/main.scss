@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
+
+@import "vars/variables";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    color: $blue;
+}
+
+
+//= Container 
+.container {
+    width: 100%;
+    padding: 30px;
+    margin: 0 auto;
+
+    @media screen and (min-width: $screen-sm-min) {
+        max-width: 1280px;
+    }
+}
+
+//= Background
+.bg-white {
+    background-color: $white;
+}
+
+//= Box-shadow
+.box-shadow {
+    box-shadow: 0px 0px 3px 1px #ccc;
+}
+
+//= Text
+
+.text-sm {
+    font-size: 15px;
+}
+
+.text-md {
+    font-size: 20px;
+}
+
+.text-light {
+    font-weight: 300;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.text-center {
+    text-align: center;
+}
+
+//= Width
+.w-50 {
+    width: 100%;
+
+    @media screen and (min-width: $screen-sm-min) {
+        width: 50%;
+    }
+}
+
+//= Paragraphe
+p {
+    margin: 0;
+}
+
+//= Padding / Margin
+
+.p-5 {
+    padding: 5px;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.pt-15 {
+    padding-top: 15px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.pl-10 {
+    padding-left: 10px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.my-30 {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+//= Flex
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+//= Align
+.content-between {
+    align-content: space-between;
+}
+
+.content-around {
+    justify-content: space-around;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.content-center {
+    place-content: center;
+}
+
+
+//= Title
+h2 {
+    
+    &::after {
+        content: url("/img/zigzag copy 2.svg");
+        display: block;
+    }
+}
+
+.total-amount {
+
+    width: 25%;
+}
