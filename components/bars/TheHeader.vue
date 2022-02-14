@@ -3,6 +3,7 @@
     <header class="header">
       <div class="header__figure">
         <img class="header__img" src="img/logo_ours_noel.svg" alt="Tediber" >
+        <p>COUCOUC</p>
       </div>
     </header>
   </div>

@@ -41,10 +41,10 @@
             </p>
             <div>
               <span class="text-sm uppercase"
-                >Taille: {{ product.quantity }}</span
+                >Taille: {{ product.size }}</span
               >
               <br />
-              <span class="text-sm uppercase">Qté: {{ product.size }}</span>
+              <span class="text-sm uppercase">Qté: {{ product.quantity }}</span>
             </div>
           </div>
         </div>

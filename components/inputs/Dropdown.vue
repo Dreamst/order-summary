@@ -1,14 +1,13 @@
 <template>
   <div class="">
     <ul v-if="whichdropdown == 1" class="dropdown">
-      <li
-        v-for="item in values"
-        :key="item.id"
-        class="dropdown__element"
-      >
-        <div class="dropdown__header flex flex--xs content-between" @click="toggleShow">
+      <li v-for="item in values" :key="item.id" class="dropdown__element">
+        <div
+          class="dropdown__header flex flex--xs content-between"
+          @click="toggleShow"
+        >
           <p class="dropdown__title uppercase inline-block">{{ item.title }}</p>
-          <span class="dropdown__icon inline-block">
+          <span class="dropdown__icon inline-block" :class="{open:isOpen}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -36,9 +35,12 @@
 
     <ul v-else class="dropdown">
       <li class="dropdown__element">
-        <div class="dropdown__header flex flex--xs content-between" @click="toggleShow">
+        <div
+          class="dropdown__header flex flex--xs content-between"
+          @click="toggleShow"
+        >
           <p class="dropdown__title inline-block">Suivi de commande</p>
-          <span class="dropdown__icon inline-block">
+          <span class="dropdown__icon inline-block" :class="{open:isOpen}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -59,29 +61,17 @@
         <div v-if="isOpen" class="dropdown__body pt-15">
           <div class="dropdown__tracking" :class="`tracking-${statusdelivery}`">
             <ul>
-              <li class="dropdown__tracking__status">
-                <img src="/img/Group.svg" alt="Tediber" />
-                <div>
-                  <input type="checkbox" />
-                </div>
-              </li>
-              <li class="dropdown__tracking__status">
-                <img src="/img/Group 2.svg" alt="Tediber" />
-                <div>
-                  <input type="checkbox" />
-                </div>
-              </li>
-              <li class="dropdown__tracking__status">
-                <img src="/img/Group 3.svg" alt="Tediber" />
-                <div>
-                  <input type="checkbox" />
-                </div>
-              </li>
-              <li class="dropdown__tracking__status">
-                <img src="/img/Group 4.svg" alt="Tediber" />
-                <div>
-                  <input type="checkbox" />
-                </div>
+              <li
+                class="dropdown__tracking__status"
+                v-for="idx in 4"
+                :key="idx"
+              >
+                <img :src="imgList[idx]" alt="Tediber" />
+
+                <label :for="`custom-checkbox${idx}`" class="custom-checkbox">
+                  <input type="checkbox" :checked="isChecked(idx)" :id="`custom-checkbox${idx}`" />
+                  <span></span>
+                </label>
               </li>
             </ul>
           </div>
@@ -89,11 +79,14 @@
       </li>
 
       <li class="dropdown__element">
-        <div class="dropdown__header flex flex--xs content-between" @click="toggleShow">
+        <div
+          class="dropdown__header flex flex--xs content-between"
+          @click="toggleShow"
+        >
           <p class="dropdown__title inline-block">
             Informations sur les retours
           </p>
-          <span class="dropdown__icon inline-block">
+          <span class="dropdown__icon inline-block" :class="{open:isOpen}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -139,13 +132,23 @@ export default {
   data() {
     return {
       isOpen: false,
+      imgList: {
+        1: '/img/Group.svg',
+        2: '/img/Group 2.svg',
+        3: '/img/Group 3.svg',
+        4: '/img/Group 4.svg',
+      },
     }
   },
   computed: {},
   methods: {
     toggleShow() {
+      
       this.isOpen = !this.isOpen
     },
+    isChecked(idx) {
+      return idx <= this.statusdelivery ? "checked" : ""
+    }
   },
 }
 </script>
@@ -155,6 +158,12 @@ export default {
 
 .dropdown {
   $c: &;
+
+  .open {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
 
   &__element {
     border-top: 1px solid $blue;
@@ -176,7 +185,6 @@ export default {
   }
 
   &__tracking {
-
     ul {
       display: flex;
       text-align: center;
@@ -190,9 +198,44 @@ export default {
         width: 100%;
         height: 63px;
       }
-
     }
   }
+}
 
+.custom-checkbox {
+  position: relative;
+
+  input {
+    transform: translateX(-9999px);
+  }
+
+  input + span {
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    display: inline-block;
+    border-radius: 3px;
+    position: relative;
+    border: 1px solid #aaa;
+    transition: 10ms;
+  }
+
+  input + span:hover {
+    cursor: pointer;
+  }
+
+  input:checked + span {
+    background-color: transparent;
+    border-color: $green;
+  }
+
+  input:checked + span:before {
+    content: '✓';
+    font-size: 12px;
+    color: #01dc82;
+    top: -1px;
+    left: 2px;
+    position: absolute;
+  }
 }
 </style>

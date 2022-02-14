@@ -1,6 +1,8 @@
 <template>
   <div class="assistance">
-    <h2 class="title uppercase my-30 text-center">Besoin d'aide ?</h2>
+    <h2 class="title uppercase my-30 text-center">
+      Besoin d'aide ?
+    </h2>
 
     <InputsDropdown :values="assistances" :whichdropdown="1" />
   </div>
